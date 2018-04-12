@@ -1,0 +1,43 @@
+{
+  "name": "spflash",
+  "displayName": "SPFlash",
+  "description": "Create and develop SharePoint front-end templates in a flash.",
+  "version": "0.0.1",
+  "publisher": "spiritous",
+  "engines": {
+    "vscode": "^1.22.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:spflash.make.master",
+    "onCommand:spflash.make.layout"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [{
+        "command": "spflash.make.master",
+        "title": "SPFlash: Make Master Page"
+      },
+      {
+        "command": "spflash.make.layout",
+        "title": "SPFlash: Make Page Layout"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "tslint": "^5.8.0",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  }
+}
