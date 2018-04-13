@@ -39,7 +39,7 @@ export default `<%@Master language="C#"%>
   <asp:ContentPlaceHolder id="PlaceHolderBodyAreaClass" Visible="true" runat="server" />
   <SharePoint:CssRegistration Name="Themable/corev15.css" runat="server" />
 
-  <%-- application stylesheets --%>
+  <%-- app styles --%>
   <SharePoint:CssRegistration Name="<% $SPUrl:~sitecollection/_catalogs/masterpage/{{ project }}/css/app.css %>" after="corev15.css" runat="server" />
 
   <%-- additional page head --%>
@@ -74,7 +74,7 @@ export default `<%@Master language="C#"%>
     <a id="HiddenAnchor" href="javascript:;" style="display:none;"></a>
 
     <%-- hide ribbon --%>
-    <SharePoint:SPSecurityTrimmedControl runat="server" AuthenticationRestrictions="AuthenticatedUsersOnly" EmitDiv="true" Permissions="ManageLists">
+    <SharePoint:SPSecurityTrimmedControl runat="server" AuthenticationRestrictions="AuthenticatedUsersOnly" EmitDiv="true" Permissions="EditListItems">
 
       <%-- body overflow when ribbon is present --%>
       <style type="text/css">body{overflow:hidden;}#s4-workspace{overflow:auto;}</style>
@@ -161,117 +161,99 @@ export default `<%@Master language="C#"%>
         <div id="pageStatusBar"></div>
 
         <%-- header --%>
-        <header class="banner s4-notdlg" role="banner">
-          <div class="banner-container container">
-            <div class="banner-row row">
+        <header class="header s4-notdlg" role="banner">
 
-              <%-- site title/logo --%>
-              <div class="col-xs-12">
-                <h2 class="brand">
-                  <SharePoint:SPSimpleSiteLink runat="server" id="onetidProjectPropertyTitleGraphic"><SharePoint:SiteLogoImage name="onetidHeadbnnr0" id="onetidHeadbnnr2" LogoImageUrl="/_layouts/15/images/siteIcon.png?rev=23" runat="server"/></SharePoint:SPSimpleSiteLink>
-                </h2>
-              </div>
+          <%-- brand --%>
+          <h2 class="brand">
+            <SharePoint:SPSimpleSiteLink runat="server" id="onetidProjectPropertyTitleGraphic"><SharePoint:SiteLogoImage name="onetidHeadbnnr0" id="onetidHeadbnnr2" LogoImageUrl="/_layouts/15/images/siteIcon.png?rev=23" runat="server"/></SharePoint:SPSimpleSiteLink>
+          </h2>
 
-              <%-- nav menu --%>
-              <nav class="menu col-xs-12 col-md-8" role="navigation">
-                <SharePoint:DelegateControl runat="server" ControlId="TopNavigationDataSource" Id="topNavigationDelegate">
-                  <Template_Controls>
-                    <asp:SiteMapDataSource ShowStartingNode="False" SiteMapProvider="SPNavigationProvider" id="topSiteMap" runat="server" StartingNodeUrl="sid:1002" />
-                  </Template_Controls>
-                </SharePoint:DelegateControl>
-                <asp:ContentPlaceHolder id="PlaceHolderTopNavBar" runat="server">
-                  <SharePoint:AspMenu ID="TopNavigationMenu" Runat="server" EnableViewState="false" DataSourceID="topSiteMap" AccessKey="<%$Resources:wss,navigation_accesskey%>" UseSimpleRendering="true" UseSeparateCss="false" Orientation="Horizontal" StaticDisplayLevels="2" AdjustForShowStartingNode="true" MaximumDynamicDisplayLevels="2" SkipLinkText="" />
-                </asp:ContentPlaceHolder>
-              </nav>
+          <%-- menu --%>
+          <nav class="menu" role="navigation">
+            <SharePoint:DelegateControl runat="server" ControlId="TopNavigationDataSource" Id="topNavigationDelegate">
+              <Template_Controls>
+                <asp:SiteMapDataSource ShowStartingNode="False" SiteMapProvider="SPNavigationProvider" id="topSiteMap" runat="server" StartingNodeUrl="sid:1002" />
+              </Template_Controls>
+            </SharePoint:DelegateControl>
+            <asp:ContentPlaceHolder id="PlaceHolderTopNavBar" runat="server">
+              <SharePoint:AspMenu ID="TopNavigationMenu" Runat="server" EnableViewState="false" DataSourceID="topSiteMap" AccessKey="<%$Resources:wss,navigation_accesskey%>" UseSimpleRendering="true" UseSeparateCss="false" Orientation="Horizontal" StaticDisplayLevels="2" AdjustForShowStartingNode="true" MaximumDynamicDisplayLevels="2" SkipLinkText="" />
+            </asp:ContentPlaceHolder>
+          </nav>
 
-              <%-- search box --%>
-              <div class="search col-xs-12 col-md-4" role="search">
-                <asp:ContentPlaceHolder id="PlaceHolderSearchArea" runat="server">
-                  <SharePoint:DelegateControl runat="server" ControlId="SmallSearchInputBox" />
-                </asp:ContentPlaceHolder>
-              </div>
-
-            </div>
+          <%-- search --%>
+          <div class="search" role="search">
+            <asp:ContentPlaceHolder id="PlaceHolderSearchArea" runat="server">
+              <SharePoint:DelegateControl runat="server" ControlId="SmallSearchInputBox" />
+            </asp:ContentPlaceHolder>
           </div>
+
         </header>
         <%-- header --%>
 
-        <%-- main --%>
-        <section class="main">
-          <div class="main-container container">
-            <div class="main-row row">
+        <%-- body --%>
+        <section class="body">
 
-              <%-- main column --%>
-              <article class="main-body col-xs-12 col-md-8" role="main">
+          <%-- main --%>
+          <main class="main" role="main">
 
-                <%-- page title --%>
-                <h1 class="page-title">
-                  <asp:ContentPlaceHolder id="PlaceHolderPageTitleInTitleArea" runat="server">
-                    <SharePoint:SPTitleBreadcrumb runat="server" RenderCurrentNodeAsLink="true" SiteMapProvider="SPContentMapProvider" CentralAdminSiteMapProvider="SPXmlAdminContentMapProvider" SkipLinkText="">
-                      <PATHSEPARATORTEMPLATE>
-                        <SharePoint:ClusteredDirectionalSeparatorArrow runat="server" />
-                      </PATHSEPARATORTEMPLATE>
-                    </SharePoint:SPTitleBreadcrumb>
-                  </asp:ContentPlaceHolder>
-                </h1>
+            <%-- page title --%>
+            <h1 class="page-title">
+              <asp:ContentPlaceHolder id="PlaceHolderPageTitleInTitleArea" runat="server">
+                <SharePoint:SPTitleBreadcrumb runat="server" RenderCurrentNodeAsLink="true" SiteMapProvider="SPContentMapProvider" CentralAdminSiteMapProvider="SPXmlAdminContentMapProvider" SkipLinkText="">
+                  <PATHSEPARATORTEMPLATE>
+                    <SharePoint:ClusteredDirectionalSeparatorArrow runat="server" />
+                  </PATHSEPARATORTEMPLATE>
+                </SharePoint:SPTitleBreadcrumb>
+              </asp:ContentPlaceHolder>
+            </h1>
 
-                <%-- page content --%>
-                <div class="page-content">
-                  <a id="mainContent" name="mainContent" tabindex="-1"></a>
-                  <asp:ContentPlaceHolder id="PlaceHolderMain" runat="server" />
-                </div>
-
-              </article>
-              <%-- /main column --%>
-
-              <%-- sidebar --%>
-              <aside class="main-sidebar col-xs-12 col-md-4 s4-notdlg" role="complementary">
-
-                <%-- side nav menu --%>
-                <nav class="side-menu" role="navigation">
-                  <SharePoint:DelegateControl runat="server" ControlId="GroupActionsTop" AllowMultipleControls="true" />
-                  <asp:ContentPlaceHolder id="PlaceHolderLeftNavBar" runat="server">
-                    <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchTop"/>
-                    <a id="startNavigation" name="startNavigation" tabIndex="-1"></a>
-                    <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarTop" runat="server" />
-                    <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchTop" runat="server" />
-                    <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarDataSource" runat="server" />
-                    <asp:ContentPlaceHolder id="PlaceHolderCalendarNavigator" runat="server" />
-                    <asp:ContentPlaceHolder id="PlaceHolderLeftActions" runat="server" />
-                    <SharePoint:SPNavigationManager id="QuickLaunchNavigationManager" runat="server" QuickLaunchControlId="V4QuickLaunchMenu" ContainedControl="QuickLaunch" EnableViewState="false">
-                      <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchDataSource">
-                        <Template_Controls>
-                          <asp:SiteMapDataSource SiteMapProvider="SPNavigationProvider" ShowStartingNode="False" id="QuickLaunchSiteMap" StartingNodeUrl="sid:1025" runat="server" />
-                        </Template_Controls>
-                      </SharePoint:DelegateControl>
-                      <SharePoint:AspMenu id="V4QuickLaunchMenu" runat="server" EnableViewState="false" DataSourceId="QuickLaunchSiteMap" UseSimpleRendering="true" Orientation="Vertical" StaticDisplayLevels="3" AdjustForShowStartingNode="true" MaximumDynamicDisplayLevels="0" SkipLinkText="" />
-                    </SharePoint:SPNavigationManager>
-                    <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchBottom" runat="server">
-                      <SharePoint:DelegateControl id="connectedGroupsNav" runat="server" ControlId="ConnectedGroupsNav" AllowMultipleControls="true" />
-                    </asp:ContentPlaceHolder>
-                    <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchBottom"/>
-                  </asp:ContentPlaceHolder>
-                </nav>
-
-              </aside>
-              <%-- /sidebar --%>
-
+            <%-- main content --%>
+            <div class="main-content">
+              <a id="mainContent" name="mainContent" tabindex="-1"></a>
+              <asp:ContentPlaceHolder id="PlaceHolderMain" runat="server"/>
             </div>
-          </div>
+
+          </main>
+          <%-- /main --%>
+
+          <%-- sidebar --%>
+          <aside class="sidebar s4-notdlg" role="complementary">
+
+            <%-- side menu --%>
+            <nav class="side-menu" role="navigation">
+              <SharePoint:DelegateControl runat="server" ControlId="GroupActionsTop" AllowMultipleControls="true" />
+              <asp:ContentPlaceHolder id="PlaceHolderLeftNavBar" runat="server">
+                <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchTop"/>
+                <a id="startNavigation" name="startNavigation" tabIndex="-1"></a>
+                <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarTop" runat="server" />
+                <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchTop" runat="server" />
+                <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarDataSource" runat="server" />
+                <asp:ContentPlaceHolder id="PlaceHolderCalendarNavigator" runat="server" />
+                <asp:ContentPlaceHolder id="PlaceHolderLeftActions" runat="server" />
+                <SharePoint:SPNavigationManager id="QuickLaunchNavigationManager" runat="server" QuickLaunchControlId="V4QuickLaunchMenu" ContainedControl="QuickLaunch" EnableViewState="false">
+                  <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchDataSource">
+                    <Template_Controls>
+                      <asp:SiteMapDataSource SiteMapProvider="SPNavigationProvider" ShowStartingNode="False" id="QuickLaunchSiteMap" StartingNodeUrl="sid:1025" runat="server" />
+                    </Template_Controls>
+                  </SharePoint:DelegateControl>
+                  <SharePoint:AspMenu id="V4QuickLaunchMenu" runat="server" EnableViewState="false" DataSourceId="QuickLaunchSiteMap" UseSimpleRendering="true" Orientation="Vertical" StaticDisplayLevels="3" AdjustForShowStartingNode="true" MaximumDynamicDisplayLevels="0" SkipLinkText="" />
+                </SharePoint:SPNavigationManager>
+                <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchBottom" runat="server">
+                  <SharePoint:DelegateControl id="connectedGroupsNav" runat="server" ControlId="ConnectedGroupsNav" AllowMultipleControls="true" />
+                </asp:ContentPlaceHolder>
+                <SharePoint:DelegateControl runat="server" ControlId="QuickLaunchBottom"/>
+              </asp:ContentPlaceHolder>
+            </nav>
+
+          </aside>
+          <%-- /sidebar --%>
+
         </section>
-        <%-- /main --%>
+        <%-- /body --%>
 
         <%-- footer --%>
         <footer class="footer s4-notdlg" role="contentinfo">
-          <div class="footer-container container">
-            <div class="footer-row row">
 
-              <div class="col-xs-12">
-                <p>&copy; 2016 Site Title</p>
-              </div>
-
-            </div>
-          </div>
         </footer>
         <%-- /footer --%>
 
@@ -323,7 +305,7 @@ export default `<%@Master language="C#"%>
   </SharePoint:AjaxDelta>
   <SharePoint:ScriptBlock runat="server">var g_Workspace = "s4-workspace";</SharePoint:ScriptBlock>
 
-  <%-- application scripts --%>
+  <%-- app scripts --%>
   <script src="<asp:Literal runat='server' Text='<% $SPUrl:~sitecollection/_catalogs/masterpage/{{ project }}/js/app.js %>'/>"></script>
 
 </body>
