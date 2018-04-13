@@ -10,16 +10,28 @@ export default class MakeLayout extends Command {
       return;
     }
 
-    // Command
-    let command = `touch ./src/layout/${fileName}.aspx`;
+    // Template type
+    let type = await this.getListInput('Environment Type', [
+      'Office 365',
+      'SharePoint 2016',
+      'SharePoint 2013',
+    ]);
+    let version = '16';
+    if (type === 'SharePoint 2013') {
+      version = '15';
+    }
 
-    // Generate master page
-    cp.exec(command, async (err, stdout) => {
-      if (err) {
-        this.showError('Could not create page layout', err);
-      } else {
-        await this.openFile(`/src/layout/${fileName}.aspx`);
-      }
+    // Get layout data
+    const hasPageContent = await this.getYesNo('Include page content field?');
+    const hasWebPartZones = await this.getYesNo('Include web part zones?');
+    const hasEditModePanel = await this.getYesNo('Include edit mode panel?');
+
+    // Create file
+    this.createFileFromTemplate(`${fileName}.aspx`, 'layout', {
+      version,
+      hasPageContent,
+      hasWebPartZones,
+      hasEditModePanel,
     });
   }
 }
