@@ -25,8 +25,8 @@ export default `<%@ Page language="C#" Inherits="Microsoft.SharePoint.Publishing
 {{/if}}
 {{#if hasWebPartZones}}
   <div class="web-parts">
-    <WebPartPages:WebPartZone id="Zone1" runat="server" title="Zone 1"/>
-    <WebPartPages:WebPartZone id="Zone2" runat="server" title="Zone 2"/>
+    <WebPartPages:WebPartZone id="Zone1" title="Zone 1" runat="server"/>
+    <WebPartPages:WebPartZone id="Zone2" title="Zone 2" runat="server"/>
   </div>
 
 {{/if}}

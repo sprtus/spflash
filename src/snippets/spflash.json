@@ -41,8 +41,8 @@
       "<SharePoint:LookupField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
     ]
   },
-  "SharePoint Field Control: Yes/No (Checkbox/Boolean)": {
-    "prefix": "sp-field-checkbox",
+  "SharePoint Field Control: Yes/No (Boolean)": {
+    "prefix": "sp-field-boolean",
     "body": [
       "<SharePoint:BooleanField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
     ]

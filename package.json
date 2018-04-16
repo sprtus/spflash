@@ -1,8 +1,18 @@
 {
   "name": "spflash",
   "displayName": "SPFlash",
-  "description": "Create and develop SharePoint front-end templates in a flash.",
-  "version": "0.0.1",
+  "description": "Create classic SharePoint front-end templates in a flash.",
+  "version": "1.0.0",
+  "author": "@kyleschaeffer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sprtus/spflash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sprtus/spflash/issues"
+  },
+  "homepage": "https://github.com/sprtus/spflash#readme",
   "publisher": "spiritous",
   "engines": {
     "vscode": "^1.22.0"
@@ -20,15 +30,18 @@
     "commands": [
       {
         "command": "spflash.make.master",
-        "title": "SPFlash: Make Master Page"
+        "title": "Make Master Page",
+        "category": "SPFlash"
       },
       {
         "command": "spflash.make.layout",
-        "title": "SPFlash: Make Page Layout"
+        "title": "Make Page Layout",
+        "category": "SPFlash"
       },
       {
         "command": "spflash.make.webpart",
-        "title": "SPFlash: Make Web Part"
+        "title": "Make Web Part",
+        "category": "SPFlash"
       }
     ],
     "snippets": [
