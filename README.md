@@ -1,28 +1,20 @@
 # SPFlash
 
+![License](https://img.shields.io/github/license/sprtus/spflash.svg?style=flat-square) ![Issues](https://img.shields.io/github/issues/sprtus/spflash.svg?style=flat-square)
+
 **SPFlash** is an extension for [Visual Studio Code](https://code.visualstudio.com/) that provides templates and snippets for common front-end template assets in the classic SharePoint experience such as master pages, publishing page layouts, web parts, and more. The extension is designed for use in SharePoint 2013, SharePoint 2016, and SharePoint Online/Office 365. Many snippets and templates may also work in SharePoint 2010.
 
----
-
-## New File Templates
+## File Templates
 
 Quickly create new master pages, page layouts, and web parts for the classic SharePoint experience using `spflash.make` commands. Open the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) (⇧⌘P) and search for `SPFlash` to begin.
 
 ![Animation of SPFlash make files in action](make.gif)
 
-### **SPFlash: Make Master Page** (`spflash.make.master`)
+### Commands
 
-Create a new master page file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
-
-### **SPFlash: Make Page Layout** (`spflash.make.layout`)
-
-Create a new publishing page layout file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
-
-### **SPFlash: Make Web Part** (`spflash.make.webpart`)
-
-Create a new Content Editor web part file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
-
----
+* **SPFlash: Make Master Page** (`spflash.make.master`): Create a new master page file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
+* **SPFlash: Make Page Layout** (`spflash.make.layout`): Create a new publishing page layout file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
+* **SPFlash: Make Web Part** (`spflash.make.webpart`): Create a new Content Editor web part file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
 
 ## Snippets
 
@@ -30,7 +22,7 @@ Quickly add web controls and content fields to your templates using dozens of sn
 
 ![Animation of SPFlash snippets in action](snippets.gif)
 
-### Field Type Snippets
+### Field Snippets
 
 Use field snippets to create field web controls that allow rendering and editing of site columns within a page layout.
 
@@ -83,17 +75,13 @@ The following controls generate `<%@ Register %>` tags for use in master page an
 * `sp-register-publishing`: Add registration for the `Publishing` namespace
 * `sp-register-taxonomy`: Add registration for the `Taxonomy` namespace
 
----
+## Settings
 
-## Extension Settings
-
-You may alter the following settings in order to define your preferred master page, page layout, and web part directories. SPFlash checks for the existence of each directory in the current workspace in order, using the first found directory as the default location for new files. Default values are shown below.
+You may alter the following [configuration settings](https://code.visualstudio.com/docs/getstarted/settings) in order to define your preferred master page, page layout, and web part directories. SPFlash checks for the existence of each directory in the current workspace in order, using the first found directory as the default location for new files. Default values are shown below.
 
 * `spflash.preferredMasterDirs`: `["_catalogs/masterpage", "src/master"]`
 * `spflash.preferredLayoutDirs`: `["_catalogs/masterpage", "src/layout"]`
 * `spflash.preferredWebpartDirs`: `["_catalogs/wp", "src/wp"]`
-
----
 
 ## Development
 

@@ -3,23 +3,29 @@
   "displayName": "SPFlash",
   "description": "Create classic SharePoint front-end templates in a flash.",
   "version": "1.0.0",
+  "publisher": "sprtus",
   "author": "@kyleschaeffer",
   "license": "MIT",
+  "homepage": "https://github.com/sprtus/spflash#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sprtus/spflash.git"
+    "url": "https://github.com/sprtus/spflash.git"
   },
   "bugs": {
     "url": "https://github.com/sprtus/spflash/issues"
   },
-  "homepage": "https://github.com/sprtus/spflash#readme",
-  "publisher": "spiritous",
   "engines": {
     "vscode": "^1.22.0"
   },
   "categories": [
+    "Snippets",
     "Other"
   ],
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#5DC988",
+    "theme": "dark"
+  },
   "activationEvents": [
     "onCommand:spflash.make.master",
     "onCommand:spflash.make.layout",
