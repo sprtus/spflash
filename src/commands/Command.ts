@@ -10,8 +10,14 @@ const mkdirp = require('mkdirp');
 const handlebars = require('handlebars');
 
 export default class Command {
-  protected static async getInput(placeHolder: string, value: string = '') {
-    let input = await window.showInputBox({ placeHolder: placeHolder.replace(/\s\s+/g, ' ').trim(), value });
+  protected static config = workspace.getConfiguration('spflash');
+
+  protected static async getInput(placeHolder: string = '', value?: string, valueSelection?: [number, number]) {
+    let input = await window.showInputBox({
+      placeHolder: placeHolder.replace(/\s\s+/g, ' ').trim(),
+      value,
+      valueSelection,
+    });
     input = input === undefined ? '' : input;
     return input;
   }
@@ -27,58 +33,72 @@ export default class Command {
     return value !== undefined && value.toLowerCase() === 'yes' ? true : false;
   }
 
-  protected static async showMessage(message: string) {
-    window.showInformationMessage(message);
-    return true;
+  protected static async getFilePathInput(placeHolder: string, fileName: string = '', filePath: string = this.getWorkspacePath()) {
+    const inputValue = `${filePath}/${fileName}`;
+    const selection: [number, number] = [
+      inputValue.lastIndexOf('/') + 1,
+      inputValue.lastIndexOf('.'),
+    ];
+    return this.getInput(placeHolder, inputValue, selection);
   }
 
-  protected static async showError(message: string, consoleErr: any = null) {
+  protected static showMessage(message: string) {
+    window.showInformationMessage(message);
+  }
+
+  protected static showError(message: string, consoleErr: any = null) {
     window.showErrorMessage(message);
     if (consoleErr) {
       console.error(consoleErr);
     }
-    return false;
   }
 
-  protected static getWorkspaceName() {
-    return path.basename(workspace.rootPath);
+  protected static getWorkspacePath(): string {
+    return <string>workspace.rootPath || '';
+  }
+
+  protected static getWorkspaceName(): string {
+    return path.basename(this.getWorkspacePath());
   }
 
   protected static async openFile(filePath: string) {
     try {
-      const openFile = await workspace.openTextDocument(path.resolve(workspace.rootPath, _.trim(filePath, '/')));
+      const openFile = await workspace.openTextDocument(filePath);
       window.showTextDocument(openFile);
       this.refreshFilesExplorer();
+      return true;
     } catch (e) {
       this.showError(`Error opening file: ${e.message}`, e);
+      return false;
     }
   }
 
   protected static async createFile(filePath: string, contents: string, openAfterCreate: boolean = true) {
     // Check for file existence
-    const newFilePath = path.resolve(workspace.rootPath, _.trim(filePath, '/'));
-    if (fs.existsSync(newFilePath)) {
-      this.showError(`File ${newFilePath} already exists.`);
-      return;
+    if (fs.existsSync(filePath)) {
+      this.showError(`File ${filePath} already exists.`);
+      return false;
     }
 
     // Create file directories
-    return mkdirp(path.dirname(newFilePath), e => {
+    return mkdirp(path.dirname(filePath), (e: any) => {
       if (e) {
         this.showError(`Error creating directories for new file: ${e.message}`, e);
-        return;
+        return false;
       }
 
       // Create new file
-      return fs.writeFile(newFilePath, contents, e => {
+      return fs.writeFile(filePath, contents, (e: any) => {
         if (e) {
           this.showError(`Error creating new file: ${e.message}`, e);
-          return;
+          return false;
         }
 
         if (openAfterCreate) {
           this.openFile(filePath);
         }
+
+        return true;
       });
     });
   }
@@ -95,7 +115,24 @@ export default class Command {
 
     } catch (e) {
       this.showError(`Error compiling template file: ${e.message}`, e);
+      return false;
     }
+  }
+
+  protected static pathExists (dir: string): boolean {
+    return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
+  }
+
+  protected static getPreferredPath(type: string = 'master'): string {
+    let preferredPath = this.getWorkspacePath();
+    for (let dir of this.config[type === 'master' ? 'preferredMasterDirs' : 'preferredLayoutDirs']) {
+      const dirPath: string = `${this.getWorkspacePath()}/${dir}`;
+      if (this.pathExists(dirPath)) {
+        preferredPath = dirPath;
+        break;
+      }
+    }
+    return preferredPath;
   }
 
   protected static refreshFilesExplorer() {

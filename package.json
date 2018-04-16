@@ -16,8 +16,7 @@
   ],
   "main": "./out/extension",
   "contributes": {
-    "commands": [
-      {
+    "commands": [{
         "command": "spflash.make.master",
         "title": "SPFlash: Make Master Page"
       },
@@ -25,7 +24,29 @@
         "command": "spflash.make.layout",
         "title": "SPFlash: Make Page Layout"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "SPFlash Configuration",
+      "properties": {
+        "spflash.preferredMasterDirs": {
+          "type": "array",
+          "default": [
+            "_catalogs/masterpage",
+            "src/master"
+          ],
+          "description": "These preferred directories will be used if they exist (in order) as the default location for newly created master page files, relative to the current working directory."
+        },
+        "spflash.preferredLayoutDirs": {
+          "type": "array",
+          "default": [
+            "_catalogs/masterpage",
+            "src/layout"
+          ],
+          "description": "These preferred directories will be used if they exist (in order) as the default location for newly created page layout files, relative to the current working directory."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

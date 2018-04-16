@@ -29,8 +29,8 @@ export default `<%@ Page language="C#" Inherits="Microsoft.SharePoint.Publishing
 {{/if}}
 {{#if hasEditModePanel}}
   <PublishingWebControls:EditModePanel CssClass="page-settings" runat="server">
-    <SharePoint:TextField FieldName="Title" runat="server"/>
-    <SharePoint:TextField FieldName="Name" runat="server"/>
+    <SharePoint:TextField FieldName="Title" InputFieldLabel="Page Title" runat="server"/>
+    <SharePoint:TextField FieldName="Name" InputFieldLabel="File Name" runat="server"/>
   </PublishingWebControls:EditModePanel>
 
 {{/if}}
