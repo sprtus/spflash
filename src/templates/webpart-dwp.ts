@@ -2,7 +2,7 @@ export default `<?xml version="1.0" encoding="utf-8"?>
 <WebPart xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/WebPart/v2">
   <Title>{{ title }}</Title>
   <FrameType>None</FrameType>
-  <Description>{{ title }}</Description>
+  <Description>{{ description }}</Description>
   <IsIncluded>true</IsIncluded>
   <ZoneID>Zone1</ZoneID>
   <PartOrder>0</PartOrder>

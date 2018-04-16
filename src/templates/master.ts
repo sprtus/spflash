@@ -1,10 +1,12 @@
 export default `<%@Master language="C#"%>
-<%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version={{ version }}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Import Namespace="Microsoft.SharePoint" %>
-<%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Assembly Name="Microsoft.Web.CommandUI, Version={{ version }}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Import Namespace="Microsoft.SharePoint.ApplicationPages" %>
-<%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version={{ version }}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+{{#if hasRibbon}}
 <%@ Register TagPrefix="wssuc" TagName="Welcome" src="~/_controltemplates/15/Welcome.ascx" %>
+{{/if}}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <SharePoint:SPHtmlTag dir="<%$Resources:wss,multipages_direction_dir_value%>" ID="SPHtmlTag" runat="server">
 <head runat="server">
@@ -14,18 +16,20 @@ export default `<%@Master language="C#"%>
   <meta http-equiv="Expires" content="0"/>
   <SharePoint:RobotsMetaTag runat="server"/>
 
-  <%-- page title --%>
+  <!-- page title -->
   <SharePoint:PageTitle runat="server">
     <asp:ContentPlaceHolder id="PlaceHolderPageTitle" runat="server">
       <SharePoint:ProjectProperty Property="Title" runat="server"/>
     </asp:ContentPlaceHolder>
   </SharePoint:PageTitle>
 
-  <%-- icons --%>
+{{#unless minimal}}
+  <!-- icons -->
   <SharePoint:SPPinnedSiteTile TileUrl="/_layouts/15/images/SharePointMetroAppTile.png" TileColor="#0072C6" runat="server"/>
   <SharePoint:SPShortcutIcon IconUrl="/_layouts/15/images/favicon.ico?rev=23" runat="server"/>
 
-  <%-- sharepoint script and style --%>
+{{/unless}}
+  <!-- sharepoint script and style -->
   <SharePoint:StartScript runat="server"/>
   <SharePoint:CssLink Version="15" runat="server"/>
   <SharePoint:ScriptLink language="javascript" name="core.js" OnDemand="true" Localizable="false" runat="server"/>
@@ -38,10 +42,12 @@ export default `<%@Master language="C#"%>
   <asp:ContentPlaceHolder id="PlaceHolderBodyAreaClass" Visible="true" runat="server"/>
   <SharePoint:CssRegistration Name="Themable/corev15.css" runat="server"/>
 
-  <%-- app styles --%>
+{{#if hasCssRegistration}}
+  <!-- app styles -->
   <SharePoint:CssRegistration Name="<% $SPUrl:~sitecollection/_catalogs/masterpage/{{ project }}/css/app.css %>" after="corev15.css" runat="server"/>
 
-  <%-- additional page head --%>
+{{/if}}
+  <!-- additional page head -->
   <asp:ContentPlaceHolder id="PlaceHolderAdditionalPageHead" runat="server"/>
   <SharePoint:DelegateControl ControlId="AdditionalPageHead" AllowMultipleControls="true" runat="server"/>
 
@@ -52,7 +58,7 @@ export default `<%@Master language="C#"%>
   <SharePoint:SPNoScript runat="server"/>
   <SharePoint:SPClientIDGenerator ServerControlID="DeltaPlaceHolderMain;DeltaPlaceHolderPageTitleInTitleArea;DeltaPlaceHolderUtilityContent" runat="server"/>
 
-  <%-- form --%>
+  <!-- form -->
   <SharePoint:SharePointForm onsubmit="if (typeof(_spFormOnSubmitWrapper) != 'undefined') {return _spFormOnSubmitWrapper();} else {return true;}" runat="server">
 
     <script type="text/javascript"> var submitHook = function () { return false; }; theForm._spOldSubmit = theForm.submit; theForm.submit = function () { if (!submitHook()) { this._spOldSubmit(); } }; </script>
@@ -64,6 +70,8 @@ export default `<%@Master language="C#"%>
       <SharePoint:DelegateControl ControlId="GlobalNavigation" runat="server"/>
       <SharePoint:DelegateControl ControlId="GlobalSiteLink3" Scope="Farm" Visible="false" runat="server"/>
     </SharePoint:AjaxDelta>
+
+{{#if hasAccessibilityLinks}}
     <div id="TurnOnAccessibility" style="display:none" class="s4-notdlg noindex"><a id="linkTurnOnAcc" title="<SharePoint:EncodedLiteral runat='server' text='<%$Resources:wss,master_turnonaccessibility%>' EncodeMethod='HtmlEncode'/>" href="#" class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(true);UpdateAccessibilityUI();document.getElementById('linkTurnOffAcc').focus();return false;"><SharePoint:EncodedLiteral text="<%$Resources:wss,master_turnonaccessibility%>" EncodeMethod="HtmlEncode" runat="server"/></a></div>
     <div id="TurnOffAccessibility" style="display:none" class="s4-notdlg noindex"><a id="linkTurnOffAcc" title="<SharePoint:EncodedLiteral runat='server' text='<%$Resources:wss,master_turnoffaccessibility%>' EncodeMethod='HtmlEncode'/>" href="#" class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(false);UpdateAccessibilityUI();document.getElementById('linkTurnOnAcc').focus();return false;"><SharePoint:EncodedLiteral text="<%$Resources:wss,master_turnoffaccessibility%>" EncodeMethod="HtmlEncode" runat="server"/></a></div>
     <div class="s4-notdlg s4-skipribbonshortcut noindex"><a href="javascript:;" title="<SharePoint:EncodedLiteral runat='server' text='<%$Resources:wss,skipRibbonCommandsLink%>' EncodeMethod='HtmlEncode'/>" onclick="document.getElementById('startNavigation').focus();" class="ms-accessible ms-acc-button" accesskey="<SharePoint:EncodedLiteral runat='server' text='<%$Resources:wss,skipribbon_accesskey%>' EncodeMethod='HtmlEncode'/>"><SharePoint:EncodedLiteral text="<%$Resources:wss,skipRibbonCommandsLink%>" EncodeMethod="HtmlEncode" runat="server"/></a></div>
@@ -72,13 +80,17 @@ export default `<%@Master language="C#"%>
     <div id="TurnOnAnimation" style="display:none;" class="s4-notdlg noindex"><a id="linkTurnOnAnimation" title="<SharePoint:EncodedLiteral runat='server' text='<%$Resources:wss,master_enableanimation%>' EncodeMethod='HtmlEncode'/>" href="#" class="ms-accessible ms-acc-button" onclick="ToggleAnimationStatus();return false;"><SharePoint:EncodedLiteral text="<%$Resources:wss,master_enableanimation%>" EncodeMethod="HtmlEncode" runat="server"/></a></div>
     <a id="HiddenAnchor" href="javascript:;" style="display:none;"></a>
 
-    <%-- hide ribbon --%>
+{{/if}}
+{{#if hasSecurityTrimmedRibbon}}
+    <!-- hide ribbon -->
     <SharePoint:SPSecurityTrimmedControl AuthenticationRestrictions="AuthenticatedUsersOnly" EmitDiv="true" Permissions="EditListItems" runat="server">
 
-      <%-- body overflow when ribbon is present --%>
+      <!-- body overflow when ribbon is present -->
       <style type="text/css">body{overflow:hidden;}#s4-workspace{overflow:auto;}</style>
 
-      <%-- suite bar --%>
+{{/if}}
+{{#if hasRibbon}}
+      <!-- suite bar -->
       <SharePoint:AjaxDelta id="suiteBarDelta" BlockElement="true" CssClass="ms-dialogHidden ms-fullWidth noindex" runat="server">
         <div id="suiteMenuData" class="ms-hide">
           <wssuc:Welcome id="IdWelcomeData" EnableViewState="false" RenderDataOnly="true" runat="server"/>
@@ -104,9 +116,9 @@ export default `<%@Master language="C#"%>
         <SharePoint:DelegateControl id="ID_SuiteBarDelegate" ControlId="SuiteBarDelegate" runat="server"/>
       </SharePoint:AjaxDelta>
       <div id="ms-hcTest"></div>
-      <%-- /suite bar --%>
+      <!-- /suite bar -->
 
-      <%-- ribbon --%>
+      <!-- ribbon -->
       <div id="s4-ribbonrow">
         <div id="globalNavBox" class="noindex">
           <div id="ribbonBox">
@@ -146,28 +158,37 @@ export default `<%@Master language="C#"%>
           </SharePoint:AjaxDelta>
         </div>
       </div>
-      <%-- /ribbon --%>
+      <!-- /ribbon -->
 
+{{/if}}
+{{#if hasSecurityTrimmedRibbon}}
     </SharePoint:SPSecurityTrimmedControl>
-    <%-- /hide ribbon --%>
+    <!-- /hide ribbon -->
 
-    <%-- workspace --%>
+{{/if}}
+    <!-- workspace -->
     <div id="s4-workspace" class="ms-core-overlay">
       <div id="s4-bodyContainer">
 
-        <%-- notifications and page status --%>
+{{#unless minimal}}
+        <!-- notifications and page status -->
         <div id="notificationArea" class="ms-notif-box"></div>
         <div id="pageStatusBar"></div>
 
-        <%-- header --%>
+{{/unless}}
+{{#if hasHeader}}
+        <!-- header -->
         <header class="header s4-notdlg" role="banner">
 
-          <%-- brand --%>
+{{#if hasBrand}}
+          <!-- brand -->
           <h2 class="brand">
             <SharePoint:SPSimpleSiteLink runat="server" id="onetidProjectPropertyTitleGraphic"><SharePoint:SiteLogoImage name="onetidHeadbnnr0" id="onetidHeadbnnr2" LogoImageUrl="/_layouts/15/images/siteIcon.png?rev=23" runat="server"/></SharePoint:SPSimpleSiteLink>
           </h2>
 
-          <%-- menu --%>
+{{/if}}
+{{#if hasNavGlobal}}
+          <!-- menu -->
           <nav class="menu" role="navigation">
             <SharePoint:DelegateControl runat="server" ControlId="TopNavigationDataSource" Id="topNavigationDelegate">
               <Template_Controls>
@@ -179,23 +200,30 @@ export default `<%@Master language="C#"%>
             </asp:ContentPlaceHolder>
           </nav>
 
-          <%-- search --%>
+{{/if}}
+{{#if hasSearch}}
+          <!-- search -->
           <div class="search" role="search">
             <asp:ContentPlaceHolder id="PlaceHolderSearchArea" runat="server">
               <SharePoint:DelegateControl runat="server" ControlId="SmallSearchInputBox"/>
             </asp:ContentPlaceHolder>
           </div>
 
+{{/if}}
         </header>
-        <%-- header --%>
+        <!-- header -->
 
-        <%-- body --%>
+{{/if}}
+{{#unless minimal}}
+        <!-- body -->
         <section class="body">
 
-          <%-- main --%>
+          <!-- main -->
           <main class="main" role="main">
 
-            <%-- page title --%>
+{{/unless}}
+{{#if hasPageTitle}}
+            <!-- page title -->
             <h1 class="page-title">
               <asp:ContentPlaceHolder id="PlaceHolderPageTitleInTitleArea" runat="server">
                 <SharePoint:SPTitleBreadcrumb runat="server" RenderCurrentNodeAsLink="true" SiteMapProvider="SPContentMapProvider" CentralAdminSiteMapProvider="SPXmlAdminContentMapProvider" SkipLinkText="">
@@ -206,19 +234,24 @@ export default `<%@Master language="C#"%>
               </asp:ContentPlaceHolder>
             </h1>
 
-            <%-- main content --%>
+{{/if}}
+            <!-- main content -->
             <div class="main-content">
               <a id="mainContent" name="mainContent" tabindex="-1"></a>
               <asp:ContentPlaceHolder id="PlaceHolderMain" runat="server"/>
             </div>
 
+{{#unless minimal}}
           </main>
-          <%-- /main --%>
+          <!-- /main -->
 
-          <%-- sidebar --%>
+{{/unless}}
+{{#if hasSidebar}}
+          <!-- sidebar -->
           <aside class="sidebar s4-notdlg" role="complementary">
 
-            <%-- side menu --%>
+{{#if hasNavCurrent}}
+            <!-- side menu -->
             <nav class="side-menu" role="navigation">
               <SharePoint:DelegateControl runat="server" ControlId="GroupActionsTop" AllowMultipleControls="true"/>
               <asp:ContentPlaceHolder id="PlaceHolderLeftNavBar" runat="server">
@@ -244,18 +277,24 @@ export default `<%@Master language="C#"%>
               </asp:ContentPlaceHolder>
             </nav>
 
+{{/if}}
           </aside>
-          <%-- /sidebar --%>
+          <!-- /sidebar -->
 
+{{/if}}
+{{#unless minimal}}
         </section>
-        <%-- /body --%>
+        <!-- /body -->
 
-        <%-- footer --%>
+{{/unless}}
+{{#if hasFooter}}
+        <!-- footer -->
         <footer class="footer s4-notdlg" role="contentinfo">
 
         </footer>
-        <%-- /footer --%>
+        <!-- /footer -->
 
+{{/if}}
         <SharePoint:AjaxDelta id="DeltaFormDigest" BlockElement="true" runat="server">
           <asp:ContentPlaceHolder id="PlaceHolderFormDigest" runat="server">
             <SharePoint:FormDigest runat="server"/>
@@ -279,21 +318,55 @@ export default `<%@Master language="C#"%>
         <asp:ContentPlaceHolder id="WSSDesignConsole" runat="server" Visible="false"/>
         <asp:ContentPlaceHolder id="PlaceHolderTitleBreadcrumb" runat="server" Visible="false"/>
         <asp:ContentPlaceHolder id="PlaceHolderPageDescription" runat="server" Visible="false"/>
+{{#unless hasNavGlobal}}
+        <asp:ContentPlaceHolder id="PlaceHolderTopNavBar" runat="server" Visible="false"/>
+{{/unless}}
+{{#unless hasSearch}}
+        <asp:ContentPlaceHolder id="PlaceHolderSearchArea" runat="server" Visible="false"/>
+{{/unless}}
+{{#unless hasPageTitle}}
+        <asp:ContentPlaceHolder id="PlaceHolderPageTitleInTitleArea" runat="server" Visible="false"/>
+{{/unless}}
+{{#unless hasNavCurrent}}
+        <asp:ContentPlaceHolder id="PlaceHolderLeftNavBar" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarTop" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchTop" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderLeftNavBarDataSource" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderCalendarNavigator" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderLeftActions" runat="server" Visible="false"/>
+        <asp:ContentPlaceHolder id="PlaceHolderQuickLaunchBottom" runat="server" Visible="false"/>
+{{/unless}}
 
       </div>
     </div>
-    <%-- /workspace --%>
+    <!-- /workspace -->
 
+{{#ifCond version '===' '16'}}
+    <%@ Register TagPrefix="wssuc" TagName="HelpPanel" src="~/_controltemplates/15/HelpPanel.ascx" %>
+    <SharePoint:AjaxDelta id="DeltaHelpPanel" runat="server">
+      <div id = "helppanelCntdiv" class="ms-Help-PanelContainer">
+        <wssuc:HelpPanel runat="server"/>
+      </div>
+    </SharePoint:AjaxDelta>
+    <SharePoint:AjaxDelta id="DeltaPageInstrumentation" runat="server">
+      <SharePoint:FlightedContent runat="server" ExpFeature="UserActivityLogging" RenderIfInFlight="true">
+        <SharePoint:PageInstrumentationControl runat="server" Id="PageInstrumentationControl"/>
+      </SharePoint:FlightedContent>
+    </SharePoint:AjaxDelta>
+
+{{/ifCond}}
   </SharePoint:SharePointForm>
-  <%-- /form --%>
+  <!-- /form -->
 
   <SharePoint:AjaxDelta id="DeltaPlaceHolderUtilityContent" runat="server">
     <asp:ContentPlaceHolder id="PlaceHolderUtilityContent" runat="server"/>
   </SharePoint:AjaxDelta>
   <SharePoint:ScriptBlock runat="server">var g_Workspace = "s4-workspace";</SharePoint:ScriptBlock>
 
-  <%-- app scripts --%>
+{{#if hasScriptRegistration}}
+  <!-- app scripts -->
   <script src="<asp:Literal runat='server' Text='<% $SPUrl:~sitecollection/_catalogs/masterpage/{{ project }}/js/app.js %>'/>"></script>
 
+{{/if}}
 </body>
 </SharePoint:SPHtmlTag>`;

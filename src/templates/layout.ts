@@ -5,6 +5,7 @@ export default `<%@ Page language="C#" Inherits="Microsoft.SharePoint.Publishing
 {{#ifCond hasPageContent '||' hasEditModePanel}}<%@ Register Tagprefix="Publishing" Namespace="Microsoft.SharePoint.Publishing.WebControls" Assembly="Microsoft.SharePoint.Publishing, Version={{ version }}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 {{/ifCond}}
 
+{{#if hasPageTitle}}
 <asp:Content ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">
   <SharePoint:FieldValue FieldName="Title" runat="server"/>
 </asp:Content>
@@ -13,6 +14,7 @@ export default `<%@ Page language="C#" Inherits="Microsoft.SharePoint.Publishing
   <SharePoint:FieldValue FieldName="Title" runat="server"/>
 </asp:Content>
 
+{{/if}}
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
 
 {{#if hasPageContent}}

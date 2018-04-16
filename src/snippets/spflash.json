@@ -206,7 +206,7 @@
   "SharePoint Web Control: Security Trimmed Control": {
     "prefix": "sp-security",
     "body": [
-      "<SharePoint:SPSecurityTrimmedControl EmitDiv=\"false\" PermissionsString=\"${1|ViewListItems,AddListItems,EditListItems,DeleteListItems,ApproveItems,OpenItems,ViewVersions,DeleteVersions,CancelCheckout,ManagePersonalViews,ManageLists,ViewFormPages,AnonymousSearchAccessList,Open,ViewPages,AddAndCustomizePages,ApplyThemeAndBorder,ApplyStyleSheets,ViewUsageData,CreateSSCSite,ManageSubwebs,CreateGroups,ManagePermissions,BrowseDirectories,BrowseUserInfo,AddDelPrivateWebParts,UpdatePersonalWebParts,ManageWeb,AnonymousSearchAccessWebLists,UseClientIntegration,UseRemoteAPIs,ManageAlerts,CreateAlerts,EditMyUserInfo,EnumeratePermissions|}\" runat=\"server\">${2}</SharePoint:SPSecurityTrimmedControl>"
+      "<SharePoint:SPSecurityTrimmedControl AuthenticationRestrictions=\"${1|AllUsers,AuthenticatedUsersOnly,AnonymousUsersOnly|}\" PermissionsString=\"${2|ViewListItems,AddListItems,EditListItems,DeleteListItems,ApproveItems,OpenItems,ViewVersions,DeleteVersions,CancelCheckout,ManagePersonalViews,ManageLists,ViewFormPages,AnonymousSearchAccessList,Open,ViewPages,AddAndCustomizePages,ApplyThemeAndBorder,ApplyStyleSheets,ViewUsageData,CreateSSCSite,ManageSubwebs,CreateGroups,ManagePermissions,BrowseDirectories,BrowseUserInfo,AddDelPrivateWebParts,UpdatePersonalWebParts,ManageWeb,AnonymousSearchAccessWebLists,UseClientIntegration,UseRemoteAPIs,ManageAlerts,CreateAlerts,EditMyUserInfo,EnumeratePermissions|}\" EmitDiv=\"false\" runat=\"server\">${3}</SharePoint:SPSecurityTrimmedControl>"
     ]
   },
   "SharePoint Namespace Registration: C#": {
