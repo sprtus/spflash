@@ -12,17 +12,33 @@
   ],
   "activationEvents": [
     "onCommand:spflash.make.master",
-    "onCommand:spflash.make.layout"
+    "onCommand:spflash.make.layout",
+    "onCommand:spflash.make.webpart"
   ],
   "main": "./out/extension",
   "contributes": {
-    "commands": [{
+    "commands": [
+      {
         "command": "spflash.make.master",
         "title": "SPFlash: Make Master Page"
       },
       {
         "command": "spflash.make.layout",
         "title": "SPFlash: Make Page Layout"
+      },
+      {
+        "command": "spflash.make.webpart",
+        "title": "SPFlash: Make Web Part"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "csharp",
+        "path": "./src/snippets/spflash.json"
+      },
+      {
+        "language": "html",
+        "path": "./src/snippets/spflash.json"
       }
     ],
     "configuration": {
@@ -44,6 +60,14 @@
             "src/layout"
           ],
           "description": "These preferred directories will be used if they exist (in order) as the default location for newly created page layout files, relative to the current working directory."
+        },
+        "spflash.preferredWebpartDirs": {
+          "type": "array",
+          "default": [
+            "_catalogs/wp",
+            "src/wp"
+          ],
+          "description": "These preferred directories will be used if they exist (in order) as the default location for newly created web part files, relative to the current working directory."
         }
       }
     }

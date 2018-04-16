@@ -12,7 +12,7 @@ export default class MakeMaster extends Command {
 
     // File name
     let fileName = await this.getFilePathInput('File Name', `${this.getWorkspaceName()}.master`, this.getPreferredPath('master'));
-    if (fileName.length === 0) {
+    if (!fileName.length) {
       this.showError('File name is required');
       return;
     }

@@ -11,8 +11,8 @@ export default class MakeLayout extends Command {
     const version = type === 'SharePoint 2013' ? '15' : '16';
 
     // File name
-    let fileName = await this.getFilePathInput('File Name', `NewLayout.aspx`, this.getPreferredPath('layout'));
-    if (fileName.length === 0) {
+    let fileName = await this.getFilePathInput('File Name', `Layout.aspx`, this.getPreferredPath('layout'));
+    if (!fileName.length) {
       this.showError('File name is required');
       return;
     }

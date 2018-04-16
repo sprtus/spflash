@@ -1,0 +1,242 @@
+{
+  "SharePoint Field Control: Single Line of Text": {
+    "prefix": "sp-field-text",
+    "body": [
+      "<SharePoint:TextField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Multiple Lines of Text": {
+    "prefix": "sp-field-multi-text",
+    "body": [
+      "<SharePoint:NoteField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Choice": {
+    "prefix": "sp-field-choice",
+    "body": [
+      "<SharePoint:DropDownChoiceField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Number": {
+    "prefix": "sp-field-number",
+    "body": [
+      "<SharePoint:NumberField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Currency": {
+    "prefix": "sp-field-currency",
+    "body": [
+      "<SharePoint:CurrencyField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Date and Time": {
+    "prefix": "sp-field-date-time",
+    "body": [
+      "<SharePoint:DateTimeField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Lookup": {
+    "prefix": "sp-field-lookup",
+    "body": [
+      "<SharePoint:LookupField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Yes/No (Checkbox/Boolean)": {
+    "prefix": "sp-field-checkbox",
+    "body": [
+      "<SharePoint:BooleanField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Person or Group (User)": {
+    "prefix": "sp-field-user",
+    "body": [
+      "<SharePoint:UserField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Hyperlink or Picture (URL)": {
+    "prefix": "sp-field-url",
+    "body": [
+      "<SharePoint:UrlField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Calculated": {
+    "prefix": "sp-field-calculated",
+    "body": [
+      "<SharePoint:CalculatedField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Task Outcome": {
+    "prefix": "sp-field-task-outcome",
+    "body": [
+      "<SharePoint:DropDownChoiceField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: HTML": {
+    "prefix": "sp-field-html",
+    "body": [
+      "<Publishing:RichHtmlField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" HasInitialFocus=\"${3|true,false|}\" MinimumEditHeight=\"${4:100px}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Image": {
+    "prefix": "sp-field-image",
+    "body": [
+      "<Publishing:RichImageField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Hyperlink": {
+    "prefix": "sp-field-link",
+    "body": [
+      "<Publishing:RichLinkField FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Summary Links": {
+    "prefix": "sp-field-summary-links",
+    "body": [
+      "<Publishing:SummaryLinkFieldControl FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Media": {
+    "prefix": "sp-field-media",
+    "body": [
+      "<Publishing:MediaFieldControl FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Field Control: Managed Metadata (Taxonomy)": {
+    "prefix": "sp-field-taxonomy",
+    "body": [
+      "<Taxonomy:TaxonomyFieldControl FieldName=\"${1:ColumnName}\" InputFieldLabel=\"${2:Field Label}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Field Value": {
+    "prefix": "sp-field-value",
+    "body": [
+      "<SharePoint:FieldValue FieldName=\"${1:ColumnName}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Content Placeholder": {
+    "prefix": "sp-placeholder",
+    "body": [
+      "<asp:ContentPlaceHolder id=\"PlaceHolder${1:Name}\" runat=\"server\">${2}</asp:ContentPlaceHolder>"
+    ]
+  },
+  "SharePoint Web Control: Content": {
+    "prefix": "sp-content",
+    "body": [
+      "<asp:Content ContentPlaceHolderID=\"PlaceHolder${1:Name}\" runat=\"server\">${2}</asp:Content>"
+    ]
+  },
+  "SharePoint Web Control: Web Part Zone": {
+    "prefix": "sp-zone",
+    "body": [
+      "<WebPartPages:WebPartZone id=\"${1:Zone1}\" title=\"${2:Zone 1}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Edit Mode Panel": {
+    "prefix": "sp-edit-panel",
+    "body": [
+      "<Publishing:EditModePanel CssClass=\"${1:page-settings}\" runat=\"server\">${2}</Publishing:EditModePanel>"
+    ]
+  },
+  "SharePoint Web Control: CSS Registration": {
+    "prefix": "sp-css",
+    "body": [
+      "<SharePoint:CssRegistration Name=\"<% \\$SPUrl:~sitecollection/_catalogs/masterpage/${1:path/to/file.css} %>\" after=\"${2:corev15.css}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Script Registration": {
+    "prefix": "sp-script",
+    "body": [
+      "<script src=\"<asp:Literal runat='server' Text='<% \\$SPUrl:~sitecollection/_catalogs/masterpage/${1:path/to/file.js} %>'/>\"></script>"
+    ]
+  },
+  "SharePoint Web Control: Hyperlink": {
+    "prefix": "sp-link",
+    "body": [
+      "<a href=\"<% \\$SPUrl:~sitecollection/${1} %>\" runat=\"server\">${2}</a>"
+    ]
+  },
+  "SharePoint Web Control: Image": {
+    "prefix": "sp-img",
+    "body": [
+      "<img src=\"<% \\$SPURL:~sitecollection/_catalogs/masterpage/${1:path/to/file.png} %>\" alt=\"${2}\" runat=\"server\">"
+    ]
+  },
+  "SharePoint Web Control: Project Property": {
+    "prefix": "sp-prop",
+    "body": [
+      "<SharePoint:ProjectProperty Property=\"${1|Title,Description,SiteUrl,Url|}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Breadcrumb": {
+    "prefix": "sp-breadcrumb",
+    "body": [
+      "<asp:SiteMapPath ParentLevelsDisplayed=\"${1:2}\" PathSeparator=\"${2:/}\" RenderCurrentNodeAsLink=\"${3|true,false|}\" RootNodeStyle-CssClass=\"${4:bc-root}\" NodeStyle-CssClass=\"${5:bc-node}\" CurrentNodeStyle-CssClass=\"${6:bc-current}\" SkipLinkText=\"\" SiteMapProvider=\"CurrentNavigation\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Global Navigation Menu": {
+    "prefix": "sp-nav-global",
+    "body": [
+      "<SharePoint:DelegateControl ControlId=\"TopNavigationDataSource\" Id=\"topNavigationDelegate\" runat=\"server\">",
+      "\t<Template_Controls>",
+      "\t\t<asp:SiteMapDataSource ShowStartingNode=\"False\" SiteMapProvider=\"SPNavigationProvider\" id=\"topSiteMap\" StartingNodeUrl=\"sid:1002\" runat=\"server\"/>",
+      "\t</Template_Controls>",
+      "</SharePoint:DelegateControl>",
+      "<SharePoint:AspMenu ID=\"TopNavigationMenu\" EnableViewState=\"false\" DataSourceID=\"topSiteMap\" AccessKey=\"<%\\$Resources:wss,navigation_accesskey%>\" UseSimpleRendering=\"true\" UseSeparateCss=\"false\" Orientation=\"${1|Horizontal,Vertical|}\" StaticDisplayLevels=\"${2:4}\" AdjustForShowStartingNode=\"true\" MaximumDynamicDisplayLevels=\"${3:0}\" SkipLinkText=\"\" Editable=\"${4|true,false|}\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Current Navigation Menu": {
+    "prefix": "sp-nav-current",
+    "body": [
+      "<SharePoint:SPNavigationManager id=\"QuickLaunchNavigationManager\" QuickLaunchControlId=\"V4QuickLaunchMenu\" ContainedControl=\"QuickLaunch\" EnableViewState=\"false\" runat=\"server\">",
+      "\t<SharePoint:DelegateControl ControlId=\"QuickLaunchDataSource\" runat=\"server\">",
+      "\t\t<Template_Controls>",
+      "\t\t\t<asp:SiteMapDataSource SiteMapProvider=\"SPNavigationProvider\" ShowStartingNode=\"False\" id=\"QuickLaunchSiteMap\" StartingNodeUrl=\"sid:1025\" runat=\"server\"/>",
+      "\t\t</Template_Controls>",
+      "\t</SharePoint:DelegateControl>",
+      "\t<SharePoint:AspMenu id=\"V4QuickLaunchMenu\" EnableViewState=\"false\" DataSourceId=\"QuickLaunchSiteMap\" UseSimpleRendering=\"true\" Orientation=\"${1|Vertical,Horizontal|}\" StaticDisplayLevels=\"${2:3}\" AdjustForShowStartingNode=\"true\" MaximumDynamicDisplayLevels=\"${3:0}\" SkipLinkText=\"\" runat=\"server\"/>",
+      "</SharePoint:SPNavigationManager>"
+    ]
+  },
+  "SharePoint Web Control: Search Box": {
+    "prefix": "sp-search",
+    "body": [
+      "<SharePoint:DelegateControl ControlId=\"SmallSearchInputBox\" runat=\"server\"/>"
+    ]
+  },
+  "SharePoint Web Control: Security Trimmed Control": {
+    "prefix": "sp-security",
+    "body": [
+      "<SharePoint:SPSecurityTrimmedControl EmitDiv=\"false\" PermissionsString=\"${1|ViewListItems,AddListItems,EditListItems,DeleteListItems,ApproveItems,OpenItems,ViewVersions,DeleteVersions,CancelCheckout,ManagePersonalViews,ManageLists,ViewFormPages,AnonymousSearchAccessList,Open,ViewPages,AddAndCustomizePages,ApplyThemeAndBorder,ApplyStyleSheets,ViewUsageData,CreateSSCSite,ManageSubwebs,CreateGroups,ManagePermissions,BrowseDirectories,BrowseUserInfo,AddDelPrivateWebParts,UpdatePersonalWebParts,ManageWeb,AnonymousSearchAccessWebLists,UseClientIntegration,UseRemoteAPIs,ManageAlerts,CreateAlerts,EditMyUserInfo,EnumeratePermissions|}\" runat=\"server\">${2}</SharePoint:SPSecurityTrimmedControl>"
+    ]
+  },
+  "SharePoint Namespace Registration: C#": {
+    "prefix": "sp-register-csharp",
+    "body": [
+      "<%@ Page language=\"C#\" Inherits=\"Microsoft.SharePoint.Publishing.PublishingLayoutPage,Microsoft.SharePoint.Publishing,Version=${1:16}.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c\" %>"
+    ]
+  },
+  "SharePoint Namespace Registration: SharePoint": {
+    "prefix": "sp-register-sharepoint",
+    "body": [
+      "<%@ Register Tagprefix=\"SharePoint\" Namespace=\"Microsoft.SharePoint.WebControls\" Assembly=\"Microsoft.SharePoint, Version=${1:16}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" %>"
+    ]
+  },
+  "SharePoint Namespace Registration: WebPartPages": {
+    "prefix": "sp-register-webpartpages",
+    "body": [
+      "<%@ Register Tagprefix=\"WebPartPages\" Namespace=\"Microsoft.SharePoint.WebPartPages\" Assembly=\"Microsoft.SharePoint, Version=${1:16}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" %>"
+    ]
+  },
+  "SharePoint Namespace Registration: Publishing": {
+    "prefix": "sp-register-publishing",
+    "body": [
+      "<%@ Register Tagprefix=\"Publishing\" Namespace=\"Microsoft.SharePoint.Publishing.WebControls\" Assembly=\"Microsoft.SharePoint.Publishing, Version=${1:16}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" %>"
+    ]
+  },
+  "SharePoint Namespace Registration: Taxonomy": {
+    "prefix": "sp-register-taxonomy",
+    "body": [
+      "<%@ Register tagprefix=\"Taxonomy\" namespace=\"Microsoft.SharePoint.Taxonomy\" assembly=\"Microsoft.SharePoint.Taxonomy, Version=${1:16}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" %>"
+    ]
+  }
+}

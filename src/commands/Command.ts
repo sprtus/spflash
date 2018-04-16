@@ -9,6 +9,34 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const handlebars = require('handlebars');
 
+// Handlebars conditional logic
+handlebars.registerHelper('ifCond', function (this: any, v1: string, operator: string, v2: string, options: any): any {
+  switch (operator) {
+    case '==':
+      return (v1 == v2) ? options.fn(this) : options.inverse(this);
+    case '===':
+      return (v1 === v2) ? options.fn(this) : options.inverse(this);
+    case '!=':
+      return (v1 != v2) ? options.fn(this) : options.inverse(this);
+    case '!==':
+      return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+    case '<':
+      return (v1 < v2) ? options.fn(this) : options.inverse(this);
+    case '<=':
+      return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+    case '>':
+      return (v1 > v2) ? options.fn(this) : options.inverse(this);
+    case '>=':
+      return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+    case '&&':
+      return (v1 && v2) ? options.fn(this) : options.inverse(this);
+    case '||':
+      return (v1 || v2) ? options.fn(this) : options.inverse(this);
+    default:
+      return options.inverse(this);
+  }
+});
+
 export default class Command {
   protected static config = workspace.getConfiguration('spflash');
 
@@ -119,13 +147,13 @@ export default class Command {
     }
   }
 
-  protected static pathExists (dir: string): boolean {
+  protected static pathExists(dir: string): boolean {
     return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
   }
 
   protected static getPreferredPath(type: string = 'master'): string {
     let preferredPath = this.getWorkspacePath();
-    for (let dir of this.config[type === 'master' ? 'preferredMasterDirs' : 'preferredLayoutDirs']) {
+    for (let dir of this.config[`preferred${type.charAt(0).toUpperCase()}${type.slice(1)}Dirs`]) {
       const dirPath: string = `${this.getWorkspacePath()}/${dir}`;
       if (this.pathExists(dirPath)) {
         preferredPath = dirPath;
