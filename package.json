@@ -2,7 +2,7 @@
   "name": "spflash",
   "displayName": "SPFlash",
   "description": "Create classic SharePoint front-end templates in a flash.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "sprtus",
   "author": "@kyleschaeffer",
   "license": "MIT",
@@ -112,14 +112,16 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
-  "devDependencies": {
-    "@types/mocha": "^2.2.42",
-    "@types/node": "^7.0.43",
+  "dependencies": {
     "fs": "0.0.1-security",
     "handlebars": "^4.0.11",
     "lodash": "^4.17.5",
     "mkdirp": "^0.5.1",
-    "path": "^0.12.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "vscode": "^1.1.6"
