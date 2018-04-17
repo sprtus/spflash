@@ -1,5 +1,3 @@
-'use strict';
-
 import {
   commands,
   ExtensionContext,
@@ -12,7 +10,12 @@ import MakeWebPart from './commands/make/WebPart';
 
 export function activate(context: ExtensionContext) {
   // Make files
-  commands.registerCommand('spflash.make.master', () => { MakeMaster.run(); });
-  commands.registerCommand('spflash.make.layout', () => { MakeLayout.run(); });
-  commands.registerCommand('spflash.make.webpart', () => { MakeWebPart.run(); });
+  const makeMasterCmd = commands.registerCommand('spflash.makeMaster', () => { MakeMaster.run(); });
+  const makeLayoutCmd = commands.registerCommand('spflash.makeLayout', () => { MakeLayout.run(); });
+  const makeWebpartCmd = commands.registerCommand('spflash.makeWebpart', () => { MakeWebPart.run(); });
+
+  // Disposables
+  context.subscriptions.push(makeMasterCmd);
+  context.subscriptions.push(makeLayoutCmd);
+  context.subscriptions.push(makeWebpartCmd);
 }

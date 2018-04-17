@@ -27,25 +27,25 @@
     "theme": "dark"
   },
   "activationEvents": [
-    "onCommand:spflash.make.master",
-    "onCommand:spflash.make.layout",
-    "onCommand:spflash.make.webpart"
+    "onCommand:spflash.makeMaster",
+    "onCommand:spflash.makeLayout",
+    "onCommand:spflash.makeWebpart"
   ],
   "main": "./out/extension",
   "contributes": {
     "commands": [
       {
-        "command": "spflash.make.master",
+        "command": "spflash.makeMaster",
         "title": "Make Master Page",
         "category": "SPFlash"
       },
       {
-        "command": "spflash.make.layout",
+        "command": "spflash.makeLayout",
         "title": "Make Page Layout",
         "category": "SPFlash"
       },
       {
-        "command": "spflash.make.webpart",
+        "command": "spflash.makeWebpart",
         "title": "Make Web Part",
         "category": "SPFlash"
       }

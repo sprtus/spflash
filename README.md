@@ -12,9 +12,9 @@ Quickly create new master pages, page layouts, and web parts for the classic Sha
 
 ### Commands
 
-* **SPFlash: Make Master Page** (`spflash.make.master`): Create a new master page file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
-* **SPFlash: Make Page Layout** (`spflash.make.layout`): Create a new publishing page layout file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
-* **SPFlash: Make Web Part** (`spflash.make.webpart`): Create a new Content Editor web part file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
+* **SPFlash: Make Master Page** (`spflash.makeMaster`): Create a new master page file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
+* **SPFlash: Make Page Layout** (`spflash.makeLayout`): Create a new publishing page layout file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
+* **SPFlash: Make Web Part** (`spflash.makeWebpart`): Create a new Content Editor web part file. If a workspace is currently open, SPFlash will attempt to create the new file in a [preferred directory](#extension-settings).
 
 ## Snippets
 
