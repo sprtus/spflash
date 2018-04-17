@@ -2,7 +2,7 @@
   "name": "spflash",
   "displayName": "SPFlash",
   "description": "Create classic SharePoint front-end templates in a flash.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "sprtus",
   "author": "@kyleschaeffer",
   "license": "MIT",
@@ -48,6 +48,20 @@
         "command": "spflash.makeWebpart",
         "title": "Make Web Part",
         "category": "SPFlash"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "spflash.makeMaster",
+        "key": ""
+      },
+      {
+        "command": "spflash.makeLayout",
+        "key": ""
+      },
+      {
+        "command": "spflash.makeWebpart",
+        "key": ""
       }
     ],
     "snippets": [
