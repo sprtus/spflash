@@ -1,0 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2018-04-17
+
+### Added
+
+- Initial release of SPFlash, available on the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=spiritous.spflash)
+- `spflash.makeMaster` command
+- `spflash.makeLayout` command
+- `spflash.makeWebpart` command
+- Dozens of initial `sp-*` snippets
+- Add documentation and changelog

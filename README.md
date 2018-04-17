@@ -4,6 +4,10 @@
 
 **SPFlash** is an extension for [Visual Studio Code](https://code.visualstudio.com/) that provides templates and snippets for common front-end template assets in the classic SharePoint experience such as master pages, publishing page layouts, web parts, and more. The extension is designed for use in SharePoint 2013, SharePoint 2016, and SharePoint Online/Office 365. Many snippets and templates may also work in SharePoint 2010.
 
+## Installation
+
+You can find SPFlash on the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=spiritous.spflash). Quickly install the extension from the marketplace within Code, itself. For more information, see the official [extension documentation here](https://code.visualstudio.com/docs/editor/extension-gallery).
+
 ## File Templates
 
 Quickly create new master pages, page layouts, and web parts for the classic SharePoint experience using `spflash.make` commands. Open the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) (⇧⌘P) and search for `SPFlash` to begin.
