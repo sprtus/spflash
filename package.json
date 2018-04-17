@@ -2,7 +2,7 @@
   "name": "spflash",
   "displayName": "SPFlash",
   "description": "Create classic SharePoint front-end templates in a flash.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "sprtus",
   "author": "@kyleschaeffer",
   "license": "MIT",
@@ -67,11 +67,11 @@
     "snippets": [
       {
         "language": "csharp",
-        "path": "./src/snippets/spflash.json"
+        "path": "./snippets/spflash.json"
       },
       {
         "language": "html",
-        "path": "./src/snippets/spflash.json"
+        "path": "./snippets/spflash.json"
       }
     ],
     "configuration": {
