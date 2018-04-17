@@ -2,7 +2,7 @@
   "name": "spflash",
   "displayName": "SPFlash",
   "description": "Create classic SharePoint front-end templates in a flash.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "sprtus",
   "author": "@kyleschaeffer",
   "license": "MIT",
